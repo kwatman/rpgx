@@ -7,4 +7,3 @@ const props = defineProps({ text: String, link: String });
     {{ text }}
   </button>
 </template>
-``
