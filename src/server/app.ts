@@ -2,11 +2,18 @@ import express, { Express } from "express";
 import fs from "fs";
 import path from "path";
 import cookieParser from "cookie-parser";
-
+import { AppDataSource } from "./AppDataSource";
 const app: Express = express();
-//const path = __dirname + "/web/";
 
 const pathToRoutes = path.join(__dirname, "routes");
+
+AppDataSource.initialize()
+  .then(async () => {
+    console.log("Database initialized");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.use(express.json());
 app.use(cookieParser());
